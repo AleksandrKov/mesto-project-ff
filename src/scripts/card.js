@@ -1,12 +1,14 @@
+import { openModal } from "../scripts/modal.js";
+
 // @todo: Темплейт карточки
 const cardTemplate = document.querySelector("#card-template").content;
 
-// @todo: DOM узлы
-const cardsContainer = document.querySelector(".places__list");
+const popupTimeImage = document.querySelector(".popup_type_image");
+const popupImage = popupTimeImage.querySelector(".popup__image");
+const popupCaption = popupTimeImage.querySelector(".popup__caption");
 
 // @todo: Функция создания карточки
-import { cardView } from "../index.js";
-function createCard(initialCard, deletteCard, likeCard, cardView) {
+export function createCard(initialCard, deletteCard, likeCard, viewingCard) {
   const card = cardTemplate.querySelector(".card").cloneNode(true);
   const cardImage = card.querySelector(".card__image");
   const cardTitle = card.querySelector(".card__title");
@@ -22,32 +24,26 @@ function createCard(initialCard, deletteCard, likeCard, cardView) {
   likeButton.addEventListener("click", () => likeCard(likeButton));
 
   cardImage.addEventListener("click", () =>
-    cardView(cardImage.src, cardImage.alt, cardTitle.textContent)
+    viewingCard(cardImage.src, cardImage.alt, cardTitle.textContent)
   );
 
   return card;
 }
 
 // @todo: Функция удаления карточки
-function deletteCard(card) {
+export function deletteCard(card) {
   card.remove();
 }
 
 // Обработка лайков
-function likeCard(likeButton) {
+export function likeCard(likeButton) {
   likeButton.classList.toggle("card__like-button_is-active");
 }
 
-// функция вывода всех карточек на страницу
-export function initialCard(cards) {
-  cards.forEach((initialCard) => {
-    cardsContainer.append(
-      createCard(initialCard, deletteCard, likeCard, cardView)
-    );
-  });
-}
-
-// вывод новой карточки на страницу
-export function addNewCard(newCard) {
-  cardsContainer.prepend(createCard(newCard, deletteCard, likeCard, cardView));
+// окно увеличенного просмотра карточки
+export function viewingCard(src, alt, textContent) {
+  openModal(popupTimeImage);
+  popupImage.setAttribute("src", src);
+  popupImage.setAttribute("alt", alt);
+  popupCaption.textContent = textContent;
 }
