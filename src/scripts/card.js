@@ -1,11 +1,5 @@
-import { openModal } from "../scripts/modal.js";
-
 // @todo: Темплейт карточки
 const cardTemplate = document.querySelector("#card-template").content;
-
-const popupTimeImage = document.querySelector(".popup_type_image");
-const popupImage = popupTimeImage.querySelector(".popup__image");
-const popupCaption = popupTimeImage.querySelector(".popup__caption");
 
 // @todo: Функция создания карточки
 export function createCard(initialCard, deletteCard, likeCard, viewingCard) {
@@ -38,12 +32,4 @@ export function deletteCard(card) {
 // Обработка лайков
 export function likeCard(likeButton) {
   likeButton.classList.toggle("card__like-button_is-active");
-}
-
-// окно увеличенного просмотра карточки
-export function viewingCard(src, alt, textContent) {
-  openModal(popupTimeImage);
-  popupImage.setAttribute("src", src);
-  popupImage.setAttribute("alt", alt);
-  popupCaption.textContent = textContent;
 }

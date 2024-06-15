@@ -4,8 +4,7 @@ import { openModal, closeModal } from "./scripts/modal";
 import {
   createCard,
   deletteCard,
-  likeCard,
-  viewingCard,
+  likeCard
 } from "./scripts/card.js";
 
 // создание переменных
@@ -25,6 +24,9 @@ const profileAddButton = document.querySelector(".profile__add-button");
 const formNewPlace = document.querySelector('form[name="new-place"]');
 const cardNameInput = document.querySelector(".popup__input_type_card-name");
 const typeUrlInput = document.querySelector(".popup__input_type_url");
+const popupTimeImage = document.querySelector(".popup_type_image");
+const popupImage = popupTimeImage.querySelector(".popup__image");
+const popupCaption = popupTimeImage.querySelector(".popup__caption");
 
 // функции
 // функция вывода всех карточек на страницу
@@ -65,6 +67,14 @@ function handleFormSubmitNewPlace(evt) {
   closeModal(popupTypeNewCard);
   addNewCard(newCard);
   formNewPlace.reset();
+}
+
+// окно увеличенного просмотра карточки
+function viewingCard(src, alt, textContent) {
+  openModal(popupTimeImage);
+  popupImage.setAttribute("src", src);
+  popupImage.setAttribute("alt", alt);
+  popupCaption.textContent = textContent;
 }
 
 // установка слушателей
