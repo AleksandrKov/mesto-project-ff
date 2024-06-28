@@ -1,3 +1,5 @@
+// import { validationConfig } from "./validation";
+
 //открытие модального окна
 export function openModal(element) {
   element.classList.add("popup_is-opened");

@@ -1,11 +1,12 @@
 import "./pages/index.css";
 import { initialCards } from "./scripts/cards.js";
 import { openModal, closeModal } from "./scripts/modal";
+import { createCard, deletteCard, likeCard } from "./scripts/card.js";
 import {
-  createCard,
-  deletteCard,
-  likeCard
-} from "./scripts/card.js";
+  enableValidation,
+  validationConfig,
+  clearValidation,
+} from "./scripts/validation.js";
 
 // создание переменных
 const cardsContainer = document.querySelector(".places__list");
@@ -27,6 +28,15 @@ const typeUrlInput = document.querySelector(".popup__input_type_url");
 const popupTimeImage = document.querySelector(".popup_type_image");
 const popupImage = popupTimeImage.querySelector(".popup__image");
 const popupCaption = popupTimeImage.querySelector(".popup__caption");
+
+// const validationConfig = {
+//       formSelector: '.popup__form',
+//       inputSelector: '.popup__input',
+//       submitButtonSelector: '.popup__button',
+//       inactiveButtonClass: 'popup__button_disabled',
+//       inputErrorClass: 'popup__input_type_error',
+//       errorClass: 'popup__error_visible'
+//     }
 
 // функции
 // функция вывода всех карточек на страницу
@@ -57,7 +67,8 @@ function handleFormSubmitEditProfile(evt) {
   profileTitle.textContent = nameInput.value;
   profileDescription.textContent = descriptionInput.value;
   closeModal(popupProfile);
-  formElement.reset();
+  clearValidation(popupProfile, validationConfig);
+  // formElement.reset();
 }
 
 // добавление новой карточки
@@ -66,7 +77,8 @@ function handleFormSubmitNewPlace(evt) {
   const newCard = { name: cardNameInput.value, link: typeUrlInput.value };
   closeModal(popupTypeNewCard);
   addNewCard(newCard);
-  formNewPlace.reset();
+  clearValidation(popupTypeNewCard, validationConfig);
+  // formNewPlace.reset();
 }
 
 // окно увеличенного просмотра карточки
@@ -80,6 +92,7 @@ function viewingCard(src, alt, textContent) {
 // установка слушателей
 // открытие попапа профиля
 profileEditButton.addEventListener("click", () => {
+  clearValidation(popupProfile, validationConfig);
   setProfilePopup(
     popupEditProfile,
     profileTitle.textContent,
@@ -93,7 +106,8 @@ formElement.addEventListener("submit", handleFormSubmitEditProfile);
 
 // добавление новой карточки на сайт
 profileAddButton.addEventListener("click", () => {
-  formNewPlace.reset();
+  // formNewPlace.reset();
+  clearValidation(popupTypeNewCard, validationConfig);
   openModal(popupTypeNewCard);
 });
 
@@ -101,3 +115,4 @@ formNewPlace.addEventListener("submit", handleFormSubmitNewPlace);
 
 // вызов функции вывода всех карточек на страницу
 initialCard(initialCards);
+enableValidation(validationConfig);

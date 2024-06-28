@@ -1,0 +1,42 @@
+.popup__input_type_error {
+    border-bottom: solid 1px #f00;
+} 
+
+ .popup__error {
+    list-style-type: none;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14.52px;
+    color: #f00; 
+    visibility: hidden; 
+}
+
+.popup__error_visible {
+    visibility: visible;
+    display: block;
+    color: #f00 !important;
+    border-bottom: solid 1px #f00;
+
+}
+
+/* .name__input-error {
+color: #f00;
+}
+
+.popup__input_type_error {
+    border-color: #ff0000;
+  }
+  
+  .popup__error_visible {
+    visibility: visible;
+    color: #ff0000;
+  }
+  
+  .popup__button_disabled {
+    background-color: #b3b3b3;
+    cursor: not-allowed;
+  } */
+
+  
+
+  
