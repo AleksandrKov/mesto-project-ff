@@ -90,18 +90,4 @@ export function patchNewAvatar(link) {
   }).then(checkResult);
 }
 
-// проверка ссылки на картинку
-export async function testUrl(url) {
-  try {
-    const response = await fetch(url, { method: "HEAD" });
-    if (response.ok) {
-      const contentType = response.headers.get("content-type");
-      console.log(contentType);
-      return contentType && contentType.startsWith("image/");
-    }
-    return false;
-  } catch (error) {
-    console.error("Error:", error);
-    return false;
-  }
-}
+
