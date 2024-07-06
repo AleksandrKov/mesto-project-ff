@@ -1,7 +1,10 @@
-// import { validationConfig } from "./validation";
+import { clearValidation, validationConfig } from "./validation";
 
 //открытие модального окна
 export function openModal(element) {
+  if (element.querySelector('input')) {
+    clearValidation(element, validationConfig);
+  }
   element.classList.add("popup_is-opened");
   document.addEventListener("keydown", closeModalEvents);
   document.addEventListener("click", closeModalEvents);
@@ -23,4 +26,7 @@ export function closeModal(element) {
   element.classList.remove("popup_is-opened");
   document.removeEventListener("click", closeModalEvents);
   document.addEventListener("keydown", closeModalEvents);
+  if (element.querySelector('input')) {
+    clearValidation(element, validationConfig);
+  }
 }

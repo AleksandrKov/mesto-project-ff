@@ -15,23 +15,25 @@
       <header class="header page__section">
         <img
           src="<%=require('../src/images/logo.svg')%>"
-          alt="Логотип проекта масто"
+          alt="Логотип проекта место"
           class="logo header__logo"
         />
       </header>
       <main class="content">
         <section class="profile page__section">
-          <div
-            class="profile__image"
-            style="
-              background-image: url('<%=require('../src/images/avatar.jpg')%>');
-            "
-            ;
-          ></div>
+          <button class="profile__image-button" type="button">
+            <div
+              class="profile__image"
+              style="
+                background-image: url('');
+              "
+            >
+          </div>
+          </button>
           <div class="profile__info">
-            <h1 class="profile__title">Жак-Ив Кусто</h1>
+            <h1 class="profile__title"></h1>
             <button class="profile__edit-button" type="button"></button>
-            <p class="profile__description">Исследователь океана</p>
+            <p class="profile__description"></p>
           </div>
           <button class="profile__add-button" type="button"></button>
         </section>
@@ -48,7 +50,7 @@
           <h3 class="popup__title">Редактировать профиль</h3>
           <form class="popup__form" name="edit-profile" novalidate>
             <input
-            id="name__input"
+              id="name__input"
               type="text"
               name="name"
               class="popup__input popup__input_type_name"
@@ -61,7 +63,7 @@
             />
             <span class="popup__error name__input-error"></span>
             <input
-            id="description__input"
+              id="description__input"
               type="text"
               name="description"
               class="popup__input popup__input_type_description"
@@ -85,7 +87,7 @@
           <h3 class="popup__title">Новое место</h3>
           <form class="popup__form" name="new-place">
             <input
-            id="place-name-input"
+              id="place-name-input"
               type="text"
               name="place-name"
               class="popup__input popup__input_type_card-name"
@@ -98,13 +100,13 @@
             />
             <span class="popup__error place-name-input-error"></span>
             <input
-            id="link-input"
+              id="link-input"
               type="url"
               name="link"
               class="popup__input popup__input_type_url"
               placeholder="Ссылка на картинку"
               required
-              data-error="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"
+              data-error="Разрешены только ссылки на изображения"
             />
             <span class="popup__error link-input-error"></span>
             <button type="submit" class="button popup__button">
@@ -121,6 +123,36 @@
         </div>
       </div>
     </div>
+    <div class="popup popup_avatar_image popup_is-animated">
+      <div class="popup__content popup__content_content_avatar">
+        <button type="button" class="popup__close"></button>
+        <h3 class="popup__title">Обновить аватар</h3>
+        <form class="popup__form" name="new-avatar">
+          <input
+            id="link-input-avatar"
+            type="url"
+            name="link"
+            class="popup__input popup__input_avatar_url"
+            placeholder="Ссылка на картинку"
+            required
+            data-error="Разрешены только ссылки на изображения"
+          />
+          <span class="popup__error link-input-avatar-error"></span>
+          <button type="submit" class="button popup__button">Сохранить</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="popup popup_confirm popup_is-animated">
+      <div class="popup__content popup__content_content_confirm">
+        <button type="button" class="popup__close"></button>
+        <h3 class="popup__title">Вы уверены?</h3>
+        <form class="popup__form" name="new-avatar">
+          <button type="submit" class="button popup__button">Да</button>
+        </form>
+      </div>
+    </div>
+
     <!-- <script src="./scripts/cards.js"></script> -->
     <!-- <script src="./scripts/index.js" defer></script> -->
 
@@ -130,7 +162,10 @@
         <button type="button" class="card__delete-button"></button>
         <div class="card__description">
           <h2 class="card__title"></h2>
-          <button type="button" class="card__like-button"></button>
+          <div class="card__like-container">
+            <button type="button" class="card__like-button"></button>
+            <span class="card__like-counter"></span>
+          </div>
         </div>
       </li>
     </template>
